@@ -1,0 +1,33 @@
+{
+  "name": "Office check in",
+  "version": "1.0.0",
+  "description": "Office auto check in through wifi connection",
+  "main": "main.js",
+  "private": true,
+  "repository": "https://github.com/bala-desktop-apps/office-check-in-updater",
+  "scripts": {
+    "test": "electron-dev",
+    "electron-dev": "electron .",
+    "rebuild": "npm rebuild --runtime=electron --target=13.1.4 --disturl=https://atom.io/download/atom-shell",
+    "deploy-win": "electron-builder --windows nsis:ia32",
+    "deploy-mac": "electron-builder --mac",
+    "postinstall": "electron-builder install-app-deps"
+  },
+  "dependencies": {
+    "auto-launch": "^5.0.5",
+    "electron-log": "^4.4.8",
+    "electron-updater": "^5.2.1",
+    "node-wifi": "^2.0.16"
+  },
+  "build": {
+    "appId": "com.app.office-check-in",
+    "productName": "Office Check In",
+    "artifactName": "office-check-in.${ext}",
+    "files": [
+      "**/*"
+    ],
+    "publish": [
+      "github"
+    ]
+  }
+}
