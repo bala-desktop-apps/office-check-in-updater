@@ -55,17 +55,18 @@ powerMonitor.on('resume', () => {
   logger.info("System is resuming..");
   setTimeout(() => {
     appInit();
+    autoUpdater.checkForUpdates();
   }, 5*60*1000); // after 5 mins, it will automatically check-in if user in office
 });
 powerMonitor.on('unlock-screen', () => {
   logger.info("You are unlocking the screen..");
   setTimeout(() => {
     appInit();
+    autoUpdater.checkForUpdates();
   }, 5*60*1000); // after 5 mins, it will automatically check-in if user in office
 });
 app.whenReady().then(() => {
   logger.info("App was ready");
-  autoUpdater.checkForUpdates();
   appInit();
 });
 app.on("window-all-closed", () => {

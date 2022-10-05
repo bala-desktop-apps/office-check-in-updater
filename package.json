@@ -1,5 +1,5 @@
 {
-  "name": "Office check in",
+  "name": "office-check-in-updater",
   "version": "1.0.0",
   "description": "Office auto check in through wifi connection",
   "main": "main.js",
@@ -7,11 +7,13 @@
   "repository": "https://github.com/bala-desktop-apps/office-check-in-updater",
   "scripts": {
     "test": "electron-dev",
-    "electron-dev": "electron .",
-    "rebuild": "npm rebuild --runtime=electron --target=13.1.4 --disturl=https://atom.io/download/atom-shell",
-    "deploy-win": "electron-builder --windows nsis:ia32",
-    "deploy-mac": "electron-builder --mac",
-    "postinstall": "electron-builder install-app-deps"
+    "start": "electron .",
+    "package": "electron-builder build --mac --win --publish never",
+    "publish": "electron-builder build --mac --win --publish always"
+  },
+  "devDependencies": {
+    "electron": "^19.1.1",
+    "electron-builder": "^23.3.3"
   },
   "dependencies": {
     "auto-launch": "^5.0.5",
@@ -26,8 +28,28 @@
     "files": [
       "**/*"
     ],
-    "publish": [
-      "github"
-    ]
+    "mac": {
+      "publish": {
+        "provider": "github",
+        "owner": "bala-desktop-apps",
+        "repo": "office-check-in-updater",
+        "private": true,
+        "token": "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"
+      }
+    },
+    "win": {
+      "publish": {
+        "provider": "github",
+        "owner": "bala-desktop-apps",
+        "repo": "office-check-in-updater",
+        "private": true,
+        "token": "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"
+      }
+    },
+    "publish": {
+      "provider": "github",
+      "private": true,
+      "owner": "bala-desktop-apps"
+    }
   }
 }
